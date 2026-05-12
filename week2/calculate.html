@@ -1,32 +1,44 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>Add and Subtract</title>
+    <title>Simple Calculator</title>
 </head>
+
 <body>
 
-    <h2>Simple Calculator</h2>
+    <h1>Simple Calculator</h1>
 
-    <input type="number" id="num1" placeholder="Enter first number">
-    <input type="number" id="num2" placeholder="Enter second number">
+    Number 1:
+    <input type="number" id="n1">
 
-    <button onclick="calculate()">Calculate</button>
+    <br><br>
 
-    <h3 id="result"></h3>
+    Number 2:
+    <input type="number" id="n2">
 
-    <script>
-        function calculate() {
-            let num1 = parseInt(document.getElementById("num1").value);
-            let num2 = parseInt(document.getElementById("num2").value);
+    <br><br>
 
-            let addition = num1 + num2;
-            let subtraction = num1 - num2;
+    <button onclick="calculate('+')">
+        ADD (+)
+    </button>
 
-            document.getElementById("result").innerHTML =
-                "Addition: " + addition + "<br>" +
-                "Subtraction: " + subtraction;
-        }
-    </script>
+    <button onclick="calculate('-')">
+        SUBTRACT (-)
+    </button>
+
+    <button onclick="calculate('*')">
+        MULTIPLY (*)
+    </button>
+
+    <button onclick="calculate('/')">
+        DIVIDE (/)
+    </button>
+
+    <h2 id="result"></h2>
+
+    <script src="calculate.js"></script>
 
 </body>
+
 </html>

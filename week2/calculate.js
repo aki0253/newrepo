@@ -1,13 +1,35 @@
-// Take two integer inputs from the user
-let num1 = parseInt(prompt("Enter the first number:"));
-let num2 = parseInt(prompt("Enter the second number:"));
+function calculate(operator)
+{
+    let n1 =
+    Number(document.getElementById("n1").value);
 
-// Add the numbers
-let addition = num1 + num2;
+    let n2 =
+    Number(document.getElementById("n2").value);
 
-// Subtract the numbers
-let subtraction = num1 - num2;
+    let answer;
 
-// Display the results
-console.log("Addition:", addition);
-console.log("Subtraction:", subtraction);
+    
+    if(operator == "+")
+    {
+        answer = n1 + n2;
+    }
+
+    else if(operator == "-")
+    {
+        answer = n1 - n2;
+    }
+
+    else if(operator == "*")
+    {
+        answer = n1 * n2;
+    }
+
+    else if(operator == "/")
+    {
+        answer = n1 / n2;
+    }
+
+    
+    document.getElementById("result").innerHTML =
+    "Result = " + answer;
+}
