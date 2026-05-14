@@ -2,6 +2,7 @@ let balance = 10000;
 const pin = 1234;
 
 function updateBalance() {
+
     document.getElementById("balance").innerHTML =
         "Bank Balance: " + balance;
 }
@@ -11,16 +12,21 @@ function withdrawal() {
     let amount =
         parseInt(document.getElementById("amount").value);
 
-    // Using modulus operator
-    if (amount % 100 != 0) {
+    if (isNaN(amount)) {
+        alert("Please enter amount");
+        return;
+    }
+
+    // Modulus operator
+    if (amount % 100 !== 0) {
         alert("Amount must be multiple of 100");
         return;
     }
 
-    let enteredPin = prompt("Enter PIN");
+    let enteredPin = prompt("Enter your PIN");
 
     if (enteredPin != pin) {
-        alert("Wrong PIN");
+        alert("Incorrect PIN");
         return;
     }
 
@@ -41,16 +47,21 @@ function deposit() {
     let amount =
         parseInt(document.getElementById("amount").value);
 
-    // Using modulus operator
-    if (amount % 100 != 0) {
+    if (isNaN(amount)) {
+        alert("Please enter amount");
+        return;
+    }
+
+    // Modulus operator
+    if (amount % 100 !== 0) {
         alert("Amount must be multiple of 100");
         return;
     }
 
-    let enteredPin = prompt("Enter PIN");
+    let enteredPin = prompt("Enter your PIN");
 
     if (enteredPin != pin) {
-        alert("Wrong PIN");
+        alert("Incorrect PIN");
         return;
     }
 
