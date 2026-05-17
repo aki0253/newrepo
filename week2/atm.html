@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>ATM System</title>
 </head>
@@ -31,15 +30,19 @@
 
         function withdrawal() {
 
+        // Gets value from input box
+        // parseInt converts text into number
+
             let amount =
                 parseInt(document.getElementById("amount").value);
 
+        // Checks if entered value is not a number
             if (isNaN(amount)) {
                 alert("Enter amount");
                 return;
             }
 
-            // Using modulus operator
+        // Using modulus operator
             if (amount % 100 != 0) {
                 alert("Amount must be multiple of 100");
                 return;

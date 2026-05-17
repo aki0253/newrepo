@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>ATM Machine</title>
+
+    <!-- Font Awesome Icons is imported for closed/open eye -->
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+
+        body {
+
+            font-family: Arial;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        h1 {
+
+            margin-bottom: 30px;
+        }
+
+        #balanceBox {
+
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        #eyeIcon {
+
+            cursor: pointer;
+            margin-left: 10px;
+            font-size: 28px;
+        }
+
+        #amount {
+
+            padding: 10px;
+            width: 220px;
+            font-size: 16px;
+            display: none;
+        }
+
+        button {
+
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <h1>ATM Machine</h1>
+
+    <div id="balanceBox">
+
+        <span id="balance">
+            Bank Balance: ****
+        </span>
+
+        <!-- Closed Eye Icon -->
+        <span id="eyeIcon" onclick="toggleBalance()">
+
+            <i class="fa-solid fa-eye-slash"></i>
+
+        </span>
+
+    </div>
+
+    <!-- Amount Input -->
+    <input type="number"
+           id="amount"
+           placeholder="Enter Amount">
+
+    <br><br>
+
+    <!-- Buttons -->
+    <button onclick="showWithdraw()">
+        Withdraw
+    </button>
+
+    <button onclick="showDeposit()">
+        Deposit
+    </button>
+
+    <script>
+
+        let balance = 10000;
+
+        const pin = 1234;
+
+        let balanceVisible = false;
+
+        // Toggle Balance closes/ opens the eye icon" 
+        function toggleBalance() {
+
+            let balanceText =
+                document.getElementById("balance");
+
+            let eyeIcon =
+                document.getElementById("eyeIcon");
+
+            if (balanceVisible == false) {
+
+                balanceText.innerHTML =
+                    "Bank Balance: " + balance;
+
+                // Open Eye Icon
+                eyeIcon.innerHTML =
+                    '<i class="fa-solid fa-eye"></i>';
+
+                balanceVisible = true;
+
+            }
+
+            else {
+
+                balanceText.innerHTML =
+                    "Bank Balance: ****";
+
+                // Closed Eye Icon
+                eyeIcon.innerHTML =
+                    '<i class="fa-solid fa-eye-slash"></i>';
+
+                balanceVisible = false;
+            }
+        }
+
+        // Show Input and Withdraw
+        function showWithdraw() {
+
+            document.getElementById("amount").style.display =
+                "inline";
+
+            withdrawal();
+        }
+
+        // Show Input and Deposit
+        function showDeposit() {
+
+            document.getElementById("amount").style.display =
+                "inline";
+
+            deposit();
+        }
+
+        // Update Balance
+        function updateBalance() {
+
+            if (balanceVisible == true) {
+
+                document.getElementById("balance").innerHTML =
+                    "Bank Balance: " + balance;
+            }
+        }
+
+        // Withdrawal Function
+        function withdrawal() {
+
+            let amount =
+                parseInt(document.getElementById("amount").value);
+
+            // Check Empty Input
+            if (isNaN(amount)) {
+
+                alert("Enter amount");
+
+                return;
+            }
+
+            // Multiple of 100
+            if (amount % 100 != 0) {
+
+                alert("Amount must be multiple of 100");
+
+                return;
+            }
+
+            // PIN Verification
+            let enteredPin =
+                prompt("Enter your PIN");
+
+            if (enteredPin != pin) {
+
+                alert("Wrong PIN");
+
+                return;
+            }
+
+            // Insufficient Balance
+            if (amount > balance) {
+
+                alert("Insufficient Balance");
+
+                return;
+            }
+
+            // Deduct Balance
+            balance = balance - amount;
+
+            updateBalance();
+
+            alert("Withdrawal Successful");
+
+            // Clear Input
+            document.getElementById("amount").value = "";
+
+            // Hide Input Field
+            document.getElementById("amount").style.display =
+                "none";
+        }
+
+        // Deposit Function
+        function deposit() {
+
+            let amount =
+                parseInt(document.getElementById("amount").value);
+
+            // Check Empty Input
+            if (isNaN(amount)) {
+
+                alert("Enter amount");
+
+                return;
+            }
+
+            // Multiple of 100
+            if (amount % 100 != 0) {
+
+                alert("Amount must be multiple of 100");
+
+                return;
+            }
+
+            // PIN Verification
+            let enteredPin =
+                prompt("Enter your PIN");
+
+            if (enteredPin != pin) {
+
+                alert("Wrong PIN");
+
+                return;
+            }
+
+            // Add Balance
+            balance = balance + amount;
+
+            updateBalance();
+
+            alert("Deposit Successful");
+
+            // Clear Input
+            document.getElementById("amount").value = "";
+
+            // Hide Input Field
+            document.getElementById("amount").style.display =
+                "none";
+        }
+
+    </script>
+
+</body>
+
+</html>
