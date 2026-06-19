@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Firebase Realtime Console Test</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 30px;
+        background-color: #f9f9f9;
+        color: #333;
+      }
+      input,
+      button,
+      select {
+        margin: 6px;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      input {
+        width: 220px;
+      }
+      button {
+        background-color: #0056b3;
+        color: white;
+        cursor: pointer;
+        font-weight: bold;
+        border: none;
+      }
+      button:hover {
+        background-color: #004085;
+      }
+      .delete-btn {
+        background-color: #dc3545;
+      }
+      .delete-btn:hover {
+        background-color: #bd2130;
+      }
+      .view-btn {
+        background-color: #28a745;
+      }
+      .view-btn:hover {
+        background-color: #218838;
+      }
+      hr {
+        margin: 30px 0;
+        border: 0;
+        border-top: 1px solid #ddd;
+      }
+      .display-box {
+        background: #fff;
+        padding: 15px;
+        border-left: 5px solid #0056b3;
+        white-space: pre-wrap;
+        display: none;
+        margin-top: 15px;
+        width: fit-content;
+        font-family: monospace;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Contact Page Form & Database Hub</h1>
+    <p>
+      Check the browser console to view raw tree nodes and child-node dropdowns.
+    </p>
+
+    <script type="module" src="contactPage.js"></script>
+
+    <h2>Submit New Contact Form (10 Fields)</h2>
+    <input
+      type="text"
+      id="form-id"
+      placeholder="Form / User ID (e.g., 1)"
+    /><br />
+    <input type="text" id="form-username" placeholder="Username (Full Name)" />
+    <input type="email" id="form-email" placeholder="Email Address" /><br />
+    <input type="text" id="form-contact" placeholder="Contact Number" />
+    <input type="text" id="form-address" placeholder="Address" /><br />
+    <select id="form-gender">
+      <option value="">Select Gender</option>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+      <option value="Other">Other</option>
+    </select>
+    <input type="number" id="form-age" placeholder="Age" /><br />
+    <input type="text" id="form-nationality" placeholder="Nationality" />
+    <input type="text" id="form-role" placeholder="Role / Occupation" /><br />
+    <input
+      type="text"
+      id="form-status"
+      placeholder="Status (e.g., Active, Pending)"
+    /><br />
+
+    <button onclick="handleSubmitForm()">Submit Form</button>
+
+    <hr />
+
+    <h2>View Data Displays</h2>
+    <button onclick="readAllUsers()">
+      Console Log All Forms (As Dropdowns)
+    </button>
+
+    <h3>Search Form by User ID</h3>
+    <input type="text" id="search-id" placeholder="Enter User ID" /><br />
+
+    <button
+      class="view-btn"
+      onclick="viewFullForm(document.getElementById('search-id').value)"
+    >
+      View Full Submitted Form
+    </button>
+    <button
+      class="view-btn"
+      onclick="viewQuickContact(document.getElementById('search-id').value)"
+    >
+      View Username, Contact & Email Only
+    </button>
+
+    <div id="display-result" class="display-box"></div>
+
+    <hr />
+
+    <h2>Remove Entry</h2>
+    <input type="text" id="remove-id" placeholder="Enter User ID to Delete" />
+    <button
+      class="delete-btn"
+      onclick="removeForm(document.getElementById('remove-id').value)"
+    >
+      Remove Submitted Field
+    </button>
+  </body>
+</html>
